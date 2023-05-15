@@ -8,9 +8,9 @@ const {DB_USER,
     DB_PORT} = process.env;
 
 const sequelize = new Sequelize(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`); 
-const connection = mysql.createConnection(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`); 
+const connection = mysql.createPool(`mysql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`); 
 
-connection.connect((error) => {
+connection.getConnection((error) => {
     if (error) {
       console.error('Error al conectarse a la base de datos:', error);
     } else {
