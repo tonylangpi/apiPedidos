@@ -8,7 +8,9 @@ const insertarPedidos = async (req, res) =>{
             if(error){
                 console.log(error);
             }else{
-                res.json({mensaje:"pedido encabezado creado exitosamente"});
+                res.json({mensaje:"pedido encabezado creado exitosamente",
+                      idPedido:results.insertId
+            });
             }
         })
     } catch (error) {
